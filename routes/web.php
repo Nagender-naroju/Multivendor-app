@@ -9,18 +9,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified',"RoleManager:user"])->name('dashboard');
-
-
-Route::get('/admin/dashboard', function () {
-    return view('admin');
-})->middleware(['auth', 'verified',"RoleManager:admin"])->name('admin.dashboard');
-
-
-Route::get('/vendor/dashboard', function () {
-    return view('vendor');
-})->middleware(['auth', 'verified', "RoleManager:vendor"])->name('vendor.dashboard');
-
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
